@@ -1,0 +1,29 @@
+<odoo>
+
+	 <record id="payment_form_recaptcha" model="ir.ui.view">
+        <field name="name">cybersource.company</field>
+        <field name="inherit_id" ref="website_sale.payment"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='payment_method']/h3" position="after">
+				<center>
+					<script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="g-recaptcha" t-att-data-sitekey="request.params.get('google_site_key')"></div>
+					<br/>
+				</center>
+			</xpath>
+        </field>
+    </record>
+
+	<template id="contactus_form_recaptcha" name="Contact Form Recaptcha" inherit_id="website_crm.contactus_form" customize_show="True">
+            <xpath expr="//form" position="before">
+			<center>
+				<script src='https://www.google.com/recaptcha/api.js'></script>
+		    	<div class="g-recaptcha" t-att-data-sitekey="request.params.get('google_site_key')"></div>
+		    	<br/>
+		    </center>
+	    </xpath>
+	</template>
+
+
+
+</odoo>

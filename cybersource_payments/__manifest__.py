@@ -6,8 +6,9 @@
     'author': 'XETECHS',
     'category': 'Website',
     'website': "xetechs.com",
-    'depends': ['website_sale', 'payment', 'sale', 'account','website'],
+    'depends': ['base','website_sale', 'payment', 'sale', 'account','website'],
     'data': [
+        'views/company.xml',
         'views/payment_view.xml',
         'views/payment_cybersource_template.xml',
         'data/payment_acquirer_data.xml',

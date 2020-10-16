@@ -188,6 +188,7 @@ class CyberSourceController(http.Controller):
         data['ccAuthService']._run = 'true'
         data['ccCaptureService'] = self.client.factory.create('ns0:ccCaptureService')
         data['ccCaptureService']._run = 'true'
+        data['deviceFingerprintID'] = order.id
         try:
             resp = self.client.service.runTransaction(**data)
         except Exception as e:
