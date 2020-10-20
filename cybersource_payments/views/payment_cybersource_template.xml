@@ -65,8 +65,11 @@
                 <div t-att-class="'form-group col-md-5' if bootstrap_formatting else 'form-group'">
                     <input type="text" name="cc_holder_name" id="cc_holder_name" class="form-control" placeholder="Cardholder name" data-is-required="true"/>
                 </div>
+                <div t-att-class="'form-group col-md-5' if bootstrap_formatting else 'form-group'">
+                    <input type="text" name="recaptcha" id="recaptcha" class="form-control" placeholder="Recaptcha" data-is-required="true" disabled="true"/>
+                </div>
                 <div t-att-class="'form-group col-md-3' if bootstrap_formatting else 'form-group'">
-                    <input type="text" name="cc_expiry" id="cc_expiry" class="form-control" maxlength="7" placeholder="Expires (MM / YY)" data-is-required="true"/>
+                    <input type="text" name="cc_expiry" id="cc_expiry" class="form-control" maxlength="7" placeholder="Expires (MM / YY)" data-is-required="true" />
                 </div>
                 <div t-att-class="'form-group col-md-4' if bootstrap_formatting else 'form-group'">
                     <input type="text" name="cc_cvc" id="cc_cvc" class="form-control" maxlength="4" placeholder="CVC" data-is-required="true"/>
@@ -84,13 +87,13 @@
             </xpath>
         </template>
 
-        <template id="assets_backend_fingerprnt" name="fl_emp_dashbord assets" inherit_id="web.assets_common_minimal_js">
-            <xpath expr="." position="inside">
-
+<!--        <template id="assets_backend_fingerprnt" name="fl_emp_dashbord assets" inherit_id="web.assets_common_minimal_js">-->
+<!--            <xpath expr="." position="inside">-->
 <!--                <t t-set="finaltext" t-value="'https://h.online-metrix.net/fp/tags.js?'+'org_id='+order.company_id.cybersource_org_id"/>-->
 <!--                <script type="text/javascript" t-att-src="finaltext"></script>-->
-            </xpath>
-        </template>
+<!--            </xpath>-->
+<!--        </template>-->
+
         <template id="PaymentFailed">
          	<t t-call="web.login_layout">
 	            <form action="/shop" method="post" id="payment_failed">

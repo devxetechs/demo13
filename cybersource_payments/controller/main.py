@@ -155,7 +155,7 @@ class CyberSourceController(http.Controller):
         data['merchantID'] = self.merchant_id
         data['merchantReferenceCode'] = self.merchant_id
         data['purchaseTotals'] = self.client.factory.create('ns0:PurchaseTotals')
-        data['purchaseTotals'].currency = 'USD'
+        data['purchaseTotals'].currency = order.pricelist_id.currency_id.name or 'USD'
         data['purchaseTotals'].grandTotalAmount = order.amount_total
         data['pos'] = self.client.factory.create('ns0:pos')
         data['billTo'] = self.client.factory.create('ns0:BillTo')
