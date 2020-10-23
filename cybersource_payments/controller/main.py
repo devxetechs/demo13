@@ -102,6 +102,8 @@ class CyberSourceController(http.Controller):
                             'acquirer_ref':order.name,'active':True,'name': 'XXXXXXXXXXXX%s - %s' % (kwargs.get('cc_number')[-4:], kwargs.get('cc_holder_name'))})
                 return_url = '/shop/confirmation'
                 request.session['requestID'] = data.get('requestID')
+            else:
+                return_url = '/shop/payment'
             transaction = request.env['payment.transaction'].sudo().form_feedback(data, 'cybersource')
         if data.get('reasonCode') == 100 or data.get('reasonCode') == 480 :
             return {
@@ -113,7 +115,7 @@ class CyberSourceController(http.Controller):
                 }
         else:
             return {
-                'result': True,
+                'result': False,
                 '3d_secure': False,
                 'verified': True,
                 }

@@ -74,6 +74,11 @@
                 <div t-att-class="'form-group col-md-4' if bootstrap_formatting else 'form-group'">
                     <input type="password" name="cc_cvc" id="cc_cvc" class="form-control" maxlength="4" placeholder="CVC" data-is-required="true"/>
                 </div>
+                <center>
+                   <script src='https://www.google.com/recaptcha/api.js'></script>
+					<div class="g-recaptcha" t-att-data-sitekey="request.params.get('google_site_key')" data-callback="recaptchaCallback"></div>
+					<br/>
+                </center>
             </div>
             <input type="hidden" name="acquirer_id" t-att-value="id"/>
             <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>

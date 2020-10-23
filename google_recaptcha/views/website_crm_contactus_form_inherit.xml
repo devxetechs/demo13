@@ -12,19 +12,6 @@
 	</template>
 
 	
-	 <record id="payment_form_recaptcha" model="ir.ui.view">
-        <field name="name">cybersource.company</field>
-        <field name="inherit_id" ref="website_sale.payment"/>
-        <field name="arch" type="xml">
-            <xpath expr="//div[@id='payment_method']/h3" position="after">
-                <center>
-                   <script src='https://www.google.com/recaptcha/api.js'></script>
-					<div class="g-recaptcha" t-att-data-sitekey="request.params.get('google_site_key')" data-callback="recaptchaCallback"></div>
-					<br/>
-                </center>
-            </xpath>
-        </field>
-    </record>
 
 	<template id="payment_tokens_list_cyber" name="Submit Button" inherit_id="payment.payment_tokens_list" >
 		<xpath expr="//button[@id = 'o_payment_form_pay']" position="replace">
