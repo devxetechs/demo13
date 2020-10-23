@@ -11,6 +11,7 @@
 	    </xpath>
 	</template>
 
+	
 	 <record id="payment_form_recaptcha" model="ir.ui.view">
         <field name="name">cybersource.company</field>
         <field name="inherit_id" ref="website_sale.payment"/>
@@ -24,8 +25,6 @@
             </xpath>
         </field>
     </record>
-
-
 
 	<template id="payment_tokens_list_cyber" name="Submit Button" inherit_id="payment.payment_tokens_list" >
 		<xpath expr="//button[@id = 'o_payment_form_pay']" position="replace">

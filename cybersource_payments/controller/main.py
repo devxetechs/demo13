@@ -132,7 +132,7 @@ class CyberSourceController(http.Controller):
                 request.website.sale_reset()
             return request.render("website_sale.confirmation", {'order': order})
         else:
-            return request.redirect('/shop')
+            return request.redirect('/shop/payment')
         
     def request_payment_status(self,post):
         order_id = request.session.get('sale_order_id')
