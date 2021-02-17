@@ -1,0 +1,34 @@
+<odoo>
+    <record id="sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="lpvv" widget="selection" />
+                 <field name="descuento_state" invisible="True" />
+                <field name="mantenimientos_manuales" groups="sales_team.group_sale_manager"/>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('lpvv', '=', 'cif'), ('lpvv', '=', 'fob')]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_tax']" position="attributes">
+                <attribute name="attrs">{'invisible': [('amount_tax', '=', 0)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_tax']" position="after">
+                <field name="on_subtotal"/>
+                <field name="on_subtotal_no_service" invisible="True"/>
+
+                <field name="on_mantenimiento_descuento" attrs="{'invisible':['|', ('on_mantenimiento_descuento', '=', 0.0), ('mantenimientos_manuales', '=', True)]}"/>
+                <field name="on_mantenimiento_cif" attrs="{'invisible':['|', ('on_mantenimiento_cif', '=', 0.0), ('mantenimientos_manuales', '=', True)]}"/>
+
+                <field name="manual_mantenimiento_descuento" attrs="{'invisible':['|', ('mantenimientos_manuales', '=', False), ('descuento_state', '=', False)]}"/>
+                <field name="manual_mantenimiento_cif" attrs="{'invisible':['|', ('mantenimientos_manuales', '=', False), ('lpvv', '!=', 'cif')]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="account_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="lpvv" invisible="True"/>
+            </xpath>
+            <xpath expr="//field[@name='amount_untaxed']" position="attributes">
+                <attribute name="attrs">{'invisible': ['|', ('lpvv', '=', 'cif'), ('lpvv', '=', 'fob')]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='amount_untaxed']" position="after">
+                <field name="on_mantenimiento_descuento" attrs="{'invisible': [('on_mantenimiento_descuento', '=', 0)]}"/>
+                <field name="on_mantenimiento_cif" attrs="{'invisible': [('on_mantenimiento_cif', '=', 0)]}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

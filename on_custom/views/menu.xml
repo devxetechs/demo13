@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="mantenimiento"
+            name="Tabla de Mantenimiento Descuento"
+            parent="sale.menu_sale_config"
+            sequence="3"
+            action="on_custom.mantenimiento_act"
+    />
+
+    <menuitem id="mantenimiento_cif"
+            name="Tabla de Mantenimiento Porcentaje CIF"
+            parent="sale.menu_sale_config"
+            sequence="4"
+            action="on_custom.mantenimiento_cif_act"
+    />
+
+
+</odoo>
